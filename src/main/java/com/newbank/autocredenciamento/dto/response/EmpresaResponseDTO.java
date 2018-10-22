@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Builder
-public class EmpresaReponseDTO {
+public class EmpresaResponseDTO {
 
     @ApiModelProperty(notes = "ID da empresa. ", example = "1", required = true, position = 1)
     private Long idEmpresa;
