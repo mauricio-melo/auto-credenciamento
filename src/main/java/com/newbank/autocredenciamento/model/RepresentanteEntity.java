@@ -31,7 +31,7 @@ public class RepresentanteEntity {
 
     @MapsId
     @OneToOne
-    @JoinColumn(name="empresa_id")
+    @JoinColumn(name="id_empresa")
     private EmpresaEntity empresa;
 
 }

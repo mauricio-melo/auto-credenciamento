@@ -26,7 +26,7 @@ public class SociosEntity {
     private String identidade;
 
     @ManyToOne
-    @JoinColumn(name="empresa_id")
+    @JoinColumn(name="id_empresa")
     private EmpresaEntity empresa;
 
 }
