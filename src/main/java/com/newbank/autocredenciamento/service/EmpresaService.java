@@ -20,6 +20,7 @@ public class EmpresaService {
     @Autowired
     private EmpresaTranslate translator;
 
+    // Serviço de criaçao
     public EmpresaEntity save(@NonNull final EmpresaDTO dto){
 
         // Tradução de DTO para Entity
@@ -31,9 +32,10 @@ public class EmpresaService {
         return entity;
     }
 
+    // Serviço de alteração
     public EmpresaEntity update(@NonNull final EmpresaDTO dto) {
 
-        // Obtendo o student pelo id
+        // Obtendo a entity pelo id
         EmpresaEntity entity = findById(dto.getIdEmpresa());
 
         // Traduzindo DTO para Entity

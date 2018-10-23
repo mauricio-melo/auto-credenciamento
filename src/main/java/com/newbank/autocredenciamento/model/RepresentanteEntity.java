@@ -29,6 +29,7 @@ public class RepresentanteEntity {
     @Column(nullable = false)
     private String email;
 
+    @MapsId
     @OneToOne
     @JoinColumn(name="empresa_id")
     private EmpresaEntity empresa;

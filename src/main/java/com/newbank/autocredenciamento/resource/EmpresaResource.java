@@ -36,10 +36,10 @@ public class EmpresaResource {
     public ResponseEntity<Void> create(@Valid @RequestBody EmpresaRequestDTO requestDTO) {
 
         // Traduzindo requisição recebida para DTO
-        final EmpresaDTO empresaDTO = translator.toDTO(requestDTO);
+        final EmpresaDTO dto = translator.toDTO(requestDTO);
 
         // Acionando service create
-        final EmpresaEntity entity = service.save(empresaDTO);
+        final EmpresaEntity entity = service.save(dto);
 
         // Gerando novo URI criado
         URI uri = ServletUriComponentsBuilder
