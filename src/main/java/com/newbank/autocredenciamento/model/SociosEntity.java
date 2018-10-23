@@ -23,9 +23,7 @@ public class SociosEntity {
     @Column(name = "tipo_pessoa", nullable = false)
     private String tipoPessoa;
 
-    private String cpf;
-
-    private String cnpj;
+    private String identidade;
 
     @ManyToOne
     @JoinColumn(name="empresa_id")

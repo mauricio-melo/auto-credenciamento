@@ -22,7 +22,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = "/api/representante")
-@Api(value = "Empresa", description = "Operações disponíveis para o recurso representante")
+@Api(value = "Representante", description = "Operações disponíveis para o recurso representante")
 public class RepresentanteResource {
 
     @Autowired

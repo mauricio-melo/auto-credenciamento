@@ -9,7 +9,6 @@ public class SociosDTO {
     private Long idSocio;
     private String nome;
     private String tipoPessoa;
-    private String cpf;
-    private String cnpj;
+    private String identidade;
     private Long empresaId;
 }
