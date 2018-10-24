@@ -2,7 +2,7 @@ package com.newbank.autocredenciamento.service;
 
 import com.newbank.autocredenciamento.dto.RepresentanteDTO;
 import com.newbank.autocredenciamento.exception.ResourceNotFoundException;
-import com.newbank.autocredenciamento.model.RepresentanteEntity;
+import com.newbank.autocredenciamento.model.Representante;
 import com.newbank.autocredenciamento.repository.RepresentanteRepository;
 import com.newbank.autocredenciamento.translate.RepresentanteTranslate;
 import lombok.NonNull;
@@ -24,10 +24,10 @@ public class RepresentanteService {
     private EmpresaService empresaService;
 
     // Serviço de criaçao
-    public RepresentanteEntity save(@NonNull final RepresentanteDTO dto){
+    public Representante save(@NonNull final RepresentanteDTO dto){
 
         // Efetuando tradução de DTO para Entity
-        RepresentanteEntity entity = translator.toEntity(dto);
+        Representante entity = translator.toEntity(dto);
 
         // Setando valores identificadores para a entity;
         entity.setEmpresa(empresaService.findById(dto.getEmpresaId()));
@@ -39,10 +39,10 @@ public class RepresentanteService {
     }
 
     // Serviço de alteração
-    public RepresentanteEntity update(@NonNull final RepresentanteDTO dto){
+    public Representante update(@NonNull final RepresentanteDTO dto){
 
         // Obtendo a entity pelo id
-        RepresentanteEntity entity = findById(dto.getIdRepresentante());
+        Representante entity = findById(dto.getIdRepresentante());
 
         // Traduzindo DTO para Entity
         entity = translator.toEntity(dto, entity);
@@ -59,13 +59,13 @@ public class RepresentanteService {
     }
 
     // Serviço de encontrar por id
-    public RepresentanteEntity findById(Long id){
+    public Representante findById(Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Representante", "representanteId", id));
     }
 
     // Serviço de listar todos
-    public List<RepresentanteEntity> findAll() {
+    public List<Representante> findAll() {
         return repository.findAll();
     }
 

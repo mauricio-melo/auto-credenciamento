@@ -3,7 +3,7 @@ package com.newbank.autocredenciamento.resource;
 import com.newbank.autocredenciamento.dto.RepresentanteDTO;
 import com.newbank.autocredenciamento.dto.request.RepresentanteRequestDTO;
 import com.newbank.autocredenciamento.dto.response.RepresentanteResponseDTO;
-import com.newbank.autocredenciamento.model.RepresentanteEntity;
+import com.newbank.autocredenciamento.model.Representante;
 import com.newbank.autocredenciamento.service.RepresentanteService;
 import com.newbank.autocredenciamento.translate.RepresentanteTranslate;
 import io.swagger.annotations.Api;
@@ -39,7 +39,7 @@ public class RepresentanteResource {
         final RepresentanteDTO dto = translator.toDTO(requestDTO);
 
         // Acionando service create
-        final RepresentanteEntity entity = service.save(dto);
+        final Representante entity = service.save(dto);
 
         // Gerando novo URI criado
         URI uri = ServletUriComponentsBuilder
@@ -57,7 +57,7 @@ public class RepresentanteResource {
     public ResponseEntity<RepresentanteResponseDTO> findById(@PathVariable final Long representanteId) {
 
         //Efetuando busca da entidade na base dados pelo id
-        final RepresentanteEntity entity = service.findById(representanteId);
+        final Representante entity = service.findById(representanteId);
 
         //Traduzindo Entity para Response
         final RepresentanteResponseDTO responseDTO = translator.toResponse(entity);
@@ -71,7 +71,7 @@ public class RepresentanteResource {
     public ResponseEntity<List<RepresentanteResponseDTO>> list() {
 
         //Buscando todos os recursos tattoo para Requisição recebida
-        final List<RepresentanteEntity> entityList = service.findAll();
+        final List<Representante> entityList = service.findAll();
 
         //Traduzindo entity para response
         final List<RepresentanteResponseDTO> responseList = translator.toResponse(entityList);

@@ -3,7 +3,7 @@ package com.newbank.autocredenciamento.translate;
 import com.newbank.autocredenciamento.dto.EmpresaDTO;
 import com.newbank.autocredenciamento.dto.request.EmpresaRequestDTO;
 import com.newbank.autocredenciamento.dto.response.EmpresaResponseDTO;
-import com.newbank.autocredenciamento.model.EmpresaEntity;
+import com.newbank.autocredenciamento.model.Empresa;
 import com.newbank.autocredenciamento.model.util.Endereco;
 import org.springframework.stereotype.Component;
 
@@ -30,12 +30,12 @@ public class EmpresaTranslate {
     }
 
     //Traduz o DTO para entity, recebendo o DTO por parametro
-    public EmpresaEntity toEntity(EmpresaDTO dto) {
-        return toEntity(dto, EmpresaEntity.builder().build());
+    public Empresa toEntity(EmpresaDTO dto) {
+        return toEntity(dto, Empresa.builder().build());
     }
 
     //Traduz o DTO para a entity, recebendo um DTO e um entity por parametro
-    public EmpresaEntity toEntity(EmpresaDTO dto, EmpresaEntity entity) {
+    public Empresa toEntity(EmpresaDTO dto, Empresa entity) {
 
         Endereco endereco = Endereco.builder()
                 .cep(dto.getCep())
@@ -56,7 +56,7 @@ public class EmpresaTranslate {
     }
 
     //Traduz a entity para a o response
-    public EmpresaResponseDTO toResponse(EmpresaEntity entity) {
+    public EmpresaResponseDTO toResponse(Empresa entity) {
         return EmpresaResponseDTO.builder()
                 .idEmpresa(entity.getIdEmpresa())
                 .cnpj(entity.getCnpj())
@@ -73,7 +73,7 @@ public class EmpresaTranslate {
 
 
     //Traduz uma lista de entity para uma lista de response
-    public List<EmpresaResponseDTO> toResponse(List<EmpresaEntity> entityList) {
+    public List<EmpresaResponseDTO> toResponse(List<Empresa> entityList) {
         List<EmpresaResponseDTO> responseDTOList = new ArrayList<EmpresaResponseDTO>();
         entityList.forEach(
                 empresaEntity ->

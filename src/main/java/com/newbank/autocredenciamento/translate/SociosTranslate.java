@@ -3,7 +3,7 @@ package com.newbank.autocredenciamento.translate;
 import com.newbank.autocredenciamento.dto.SociosDTO;
 import com.newbank.autocredenciamento.dto.request.SociosRequestDTO;
 import com.newbank.autocredenciamento.dto.response.SociosResponseDTO;
-import com.newbank.autocredenciamento.model.SociosEntity;
+import com.newbank.autocredenciamento.model.Socios;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,12 +22,12 @@ public class SociosTranslate {
     }
 
     //Traduz o DTO para entity, recebendo o DTO por parametro
-    public SociosEntity toEntity(SociosDTO dto) {
-        return toEntity(dto, SociosEntity.builder().build());
+    public Socios toEntity(SociosDTO dto) {
+        return toEntity(dto, Socios.builder().build());
     }
 
     //Traduz o DTO para a entity, recebendo um DTO e um entity por parametro
-    public SociosEntity toEntity(SociosDTO dto, SociosEntity entity) {
+    public Socios toEntity(SociosDTO dto, Socios entity) {
 
         entity.setIdSocio(dto.getIdSocio());
         entity.setNome(dto.getNome());
@@ -38,7 +38,7 @@ public class SociosTranslate {
     }
 
     //Traduz a entity para a o response
-    public SociosResponseDTO toResponse(SociosEntity entity) {
+    public SociosResponseDTO toResponse(Socios entity) {
         return SociosResponseDTO.builder()
                 .idSocio(entity.getIdSocio())
                 .nome(entity.getNome())
@@ -50,7 +50,7 @@ public class SociosTranslate {
 
 
     //Traduz uma lista de entity para uma lista de response
-    public List<SociosResponseDTO> toResponse(List<SociosEntity> entityList) {
+    public List<SociosResponseDTO> toResponse(List<Socios> entityList) {
         List<SociosResponseDTO> responseDTOList = new ArrayList<SociosResponseDTO>();
         entityList.forEach(
                 entity ->

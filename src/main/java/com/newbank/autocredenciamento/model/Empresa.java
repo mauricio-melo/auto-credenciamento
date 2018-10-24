@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "empresa")
-public class EmpresaEntity {
+public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,8 +37,8 @@ public class EmpresaEntity {
     private Endereco endereco;
 
     @OneToOne(mappedBy = "empresa")
-    private RepresentanteEntity representante;
+    private Representante representante;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-    private List<SociosEntity> socios;
+    private List<Socios> socios;
 }

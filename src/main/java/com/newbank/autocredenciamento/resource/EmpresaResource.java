@@ -3,7 +3,7 @@ package com.newbank.autocredenciamento.resource;
 import com.newbank.autocredenciamento.dto.EmpresaDTO;
 import com.newbank.autocredenciamento.dto.request.EmpresaRequestDTO;
 import com.newbank.autocredenciamento.dto.response.EmpresaResponseDTO;
-import com.newbank.autocredenciamento.model.EmpresaEntity;
+import com.newbank.autocredenciamento.model.Empresa;
 import com.newbank.autocredenciamento.service.EmpresaService;
 import com.newbank.autocredenciamento.translate.EmpresaTranslate;
 import io.swagger.annotations.Api;
@@ -39,7 +39,7 @@ public class EmpresaResource {
         final EmpresaDTO dto = translator.toDTO(requestDTO);
 
         // Acionando service create
-        final EmpresaEntity entity = service.save(dto);
+        final Empresa entity = service.save(dto);
 
         // Gerando novo URI criado
         URI uri = ServletUriComponentsBuilder
@@ -57,7 +57,7 @@ public class EmpresaResource {
     public ResponseEntity<EmpresaResponseDTO> findById(@PathVariable final Long empresaId) {
 
         //Efetuando busca da entidade na base dados pelo id
-        final EmpresaEntity entity = service.findById(empresaId);
+        final Empresa entity = service.findById(empresaId);
 
         //Traduzindo Entity para Response
         final EmpresaResponseDTO responseDTO = translator.toResponse(entity);
@@ -71,7 +71,7 @@ public class EmpresaResource {
     public ResponseEntity<List<EmpresaResponseDTO>> list() {
 
         //Buscando todos os recursos tattoo para Requisição recebida
-        final List<EmpresaEntity> entityList = service.findAll();
+        final List<Empresa> entityList = service.findAll();
 
         //Traduzindo entity para response
         final List<EmpresaResponseDTO> responseList = translator.toResponse(entityList);

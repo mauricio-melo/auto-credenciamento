@@ -2,7 +2,7 @@ package com.newbank.autocredenciamento.service;
 
 import com.newbank.autocredenciamento.dto.EmpresaDTO;
 import com.newbank.autocredenciamento.exception.ResourceNotFoundException;
-import com.newbank.autocredenciamento.model.EmpresaEntity;
+import com.newbank.autocredenciamento.model.Empresa;
 import com.newbank.autocredenciamento.repository.EmpresaRepository;
 import com.newbank.autocredenciamento.translate.EmpresaTranslate;
 import lombok.NonNull;
@@ -21,10 +21,10 @@ public class EmpresaService {
     private EmpresaTranslate translator;
 
     // Serviço de criaçao
-    public EmpresaEntity save(@NonNull final EmpresaDTO dto){
+    public Empresa save(@NonNull final EmpresaDTO dto){
 
         // Tradução de DTO para Entity
-        EmpresaEntity entity = translator.toEntity(dto);
+        Empresa entity = translator.toEntity(dto);
 
         // Salvando no banco
         entity = repository.save(entity);
@@ -33,10 +33,10 @@ public class EmpresaService {
     }
 
     // Serviço de alteração
-    public EmpresaEntity update(@NonNull final EmpresaDTO dto) {
+    public Empresa update(@NonNull final EmpresaDTO dto) {
 
         // Obtendo a entity pelo id
-        EmpresaEntity entity = findById(dto.getIdEmpresa());
+        Empresa entity = findById(dto.getIdEmpresa());
 
         // Traduzindo DTO para Entity
         entity = translator.toEntity(dto, entity);
@@ -50,12 +50,12 @@ public class EmpresaService {
         repository.deleteById(id);
     }
 
-    public EmpresaEntity findById(Long id) {
+    public Empresa findById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Empresa", "empresaId", id));
     }
 
-    public List<EmpresaEntity> findAll() {
+    public List<Empresa> findAll() {
         return repository.findAll();
     }
 

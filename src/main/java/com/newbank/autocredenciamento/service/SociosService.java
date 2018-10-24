@@ -2,7 +2,7 @@ package com.newbank.autocredenciamento.service;
 
 import com.newbank.autocredenciamento.dto.SociosDTO;
 import com.newbank.autocredenciamento.exception.ResourceNotFoundException;
-import com.newbank.autocredenciamento.model.SociosEntity;
+import com.newbank.autocredenciamento.model.Socios;
 import com.newbank.autocredenciamento.repository.SociosRepository;
 import com.newbank.autocredenciamento.translate.SociosTranslate;
 import lombok.NonNull;
@@ -24,10 +24,10 @@ public class SociosService {
     private EmpresaService empresaService;
 
     // Serviço de criaçao
-    public SociosEntity save(@NonNull final SociosDTO dto){
+    public Socios save(@NonNull final SociosDTO dto){
 
         // Efetuando tradução de DTO para Entity
-        SociosEntity entity = translator.toEntity(dto);
+        Socios entity = translator.toEntity(dto);
 
         // Setando valores identificadores para a entity;
         entity.setEmpresa(empresaService.findById(dto.getEmpresaId()));
@@ -39,10 +39,10 @@ public class SociosService {
     }
 
     // Serviço de alteração
-    public SociosEntity update(@NonNull final SociosDTO dto){
+    public Socios update(@NonNull final SociosDTO dto){
 
         // Obtendo a entity pelo id
-        SociosEntity entity = findById(dto.getIdSocio());
+        Socios entity = findById(dto.getIdSocio());
 
         // Traduzindo DTO para Entity
         entity = translator.toEntity(dto, entity);
@@ -59,13 +59,13 @@ public class SociosService {
     }
 
     // Serviço de encontrar por id
-    public SociosEntity findById(Long id){
+    public Socios findById(Long id){
         return repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Socio", "idSocio", id));
     }
 
     // Serviço de listar todos
-    public List<SociosEntity> findAll() {
+    public List<Socios> findAll() {
         return repository.findAll();
     }
 

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "socios")
-public class SociosEntity {
+public class Socios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,7 @@ public class SociosEntity {
 
     @ManyToOne
     @JoinColumn(name="id_empresa")
-    private EmpresaEntity empresa;
+    private Empresa empresa;
 
 }
 
